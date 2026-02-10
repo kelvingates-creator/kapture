@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const events = await getCollection("events");
+---
+
+<BaseLayout title="Events">
+  <h1>Upcoming Events</h1>
+
+    <ul>
+        {events.map((event) => (
+                  <li>
+                          <strong>{event.data.title}</strong><br />
+                                  {event.data.eventDate.toDateString()}<br />
+                                          {event.data.location}
+                                                </li>
+        ))}
+          </ul>
+          </BaseLayout>
+        ))}
